@@ -13,7 +13,8 @@
         Height="450" 
         Width="1000"
         MinWidth="1280"
-        MinHeight="800">
+        MinHeight="800"
+        Name="MainAppWindow">
     
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -57,17 +58,28 @@
                 </EventTrigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
-
     </Window.Resources>
 
+
+    <!-- Interaction을 통해 Loaded 및 StateChanged 이벤트를 바인딩 -->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding OnLoadCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="StateChanged">
+            <i:InvokeCommandAction Command="{Binding StateChangedCommand}" 
+                           CommandParameter="{Binding ElementName=MainAppWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
-        <i:Interaction.Triggers>
+        <!-- Interaction을 통해 Loaded 이벤트를 Command에 바인딩 -->
+        <!--<i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding OnLoadCommand}"/>
             </i:EventTrigger>
-        </i:Interaction.Triggers>
-        <!-- Interaction을 통해 Loaded 이벤트를 Command에 바인딩 -->
+        </i:Interaction.Triggers>-->
+        
        
         
         <Grid.ColumnDefinitions>

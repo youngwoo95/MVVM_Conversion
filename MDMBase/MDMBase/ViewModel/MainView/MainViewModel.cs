@@ -1,6 +1,7 @@
 ﻿using MDMBase.Command;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MDMBase.ViewModel.MainView
@@ -12,6 +13,7 @@ namespace MDMBase.ViewModel.MainView
         public ICommand btnStopCommand { get; }
         public ICommand btnSettingCommand { get; }
         public ICommand OnLoadCommand { get; }
+        public ICommand StateChangedCommand { get; }
 
         // 화면변경
         private System.Windows.Controls.UserControl _currentView;
@@ -35,6 +37,7 @@ namespace MDMBase.ViewModel.MainView
             btnStartCommand = new RelayCommand(StartClickEvent);
             btnStopCommand = new RelayCommand(StopClickEvent);
             btnSettingCommand = new RelayCommand(SettingClickEvent);
+            StateChangedCommand = new RelayCommand(OnStateChanged);
 
             OnLoadCommand = new RelayCommand(OnLoaded);
         }
@@ -45,6 +48,7 @@ namespace MDMBase.ViewModel.MainView
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+      
 
 
 
