@@ -7,6 +7,9 @@ namespace MDMBase.ViewModel.MainView
 	{
 		private NotifyIcon? notifyIcon;
 
+		// 델리게이트 정의
+		public Action? OnMinimizeRequested;
+
 		/// <summary>
 		/// LOAD 이벤트
 		/// </summary>
@@ -33,7 +36,8 @@ namespace MDMBase.ViewModel.MainView
 
         }
 
-		private void OpenApp_Click(object? sender, EventArgs e)
+        // 델리게이트 이벤트 동작
+        private void OpenApp_Click(object? sender, EventArgs e)
 		{
 			var temp = new MainWindow();
 			temp.Show();
@@ -41,6 +45,7 @@ namespace MDMBase.ViewModel.MainView
 			temp.Activate();
 		}
 
+		// 델리게이트 이벤트 동작
         private void OnStateChanged(object parameter)
         {
 
@@ -52,7 +57,8 @@ namespace MDMBase.ViewModel.MainView
                         Console.WriteLine("Window 상태: Maximized");
                         break;
                     case WindowState.Minimized:
-                        Console.WriteLine("Window 상태: Minimized");
+						OnMinimizeRequested?.Invoke();
+
                         break;
                     case WindowState.Normal:
                         Console.WriteLine("Window 상태: Normal");
