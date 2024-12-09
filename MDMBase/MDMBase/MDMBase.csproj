@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+	  <!-- WPF 창 애플리케이션 실행 -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+	  <!-- Windows 플랫폼 지정 -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<!-- WPF 활성화 -->
+    <UseWPF>true</UseWPF>
+	  <!-- WindowsForm 활성화 -->
+	<UseWindowsForms>True</UseWindowsForms>
+	<ApplicationManifest>app.manifest</ApplicationManifest>
+	<ApplicationIcon>images\run_ico.ico</ApplicationIcon>
+	  <PackageIcon>Stec_Logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\D2Coding-Ver1.3.2-20180524-all.ttc" />
+    <None Remove="Fonts\NanumBarunGothic-YetHangul.otf" />
+    <None Remove="Fonts\NanumGothicEco.otf" />
+    <None Remove="Fonts\NanumSquareEB.otf" />
+    <None Remove="Images\Start_ICO.ico" />
+    <None Remove="Images\Stec_Logo.png" />
+    <None Remove="Images\Stop_ICO.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\run_ico.ico" />
+    <Content Include="Images\Start_ICO.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Stec_Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Stop_ICO.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\D2Coding-Ver1.3.2-20180524-all.ttc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\NanumBarunGothic-YetHangul.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\NanumGothicEco.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\NanumSquareEB.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\run_ico.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
