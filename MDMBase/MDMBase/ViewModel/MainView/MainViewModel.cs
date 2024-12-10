@@ -6,6 +6,9 @@ using System.Windows.Input;
 
 namespace MDMBase.ViewModel.MainView
 {
+    /// <summary>
+    /// VIEW MODEL
+    /// </summary>
     public partial class MainViewModel : INotifyPropertyChanged
     {
         public ICommand btnHomeCommand { get; }
@@ -13,7 +16,6 @@ namespace MDMBase.ViewModel.MainView
         public ICommand btnStopCommand { get; }
         public ICommand btnSettingCommand { get; }
         public ICommand OnLoadCommand { get; }
-        public ICommand StateChangedCommand { get; }
 
         // 화면변경
         private System.Windows.Controls.UserControl _currentView;
@@ -37,19 +39,16 @@ namespace MDMBase.ViewModel.MainView
             btnStartCommand = new RelayCommand(StartClickEvent);
             btnStopCommand = new RelayCommand(StopClickEvent);
             btnSettingCommand = new RelayCommand(SettingClickEvent);
-            StateChangedCommand = new RelayCommand(OnStateChanged);
+            
 
             OnLoadCommand = new RelayCommand(OnLoaded);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-      
-
 
 
     }

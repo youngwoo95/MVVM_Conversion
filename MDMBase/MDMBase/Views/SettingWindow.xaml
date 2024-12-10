@@ -4,10 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MDMBase.Views"
+             xmlns:vm="clr-namespace:MDMBase.ViewModel.SettingView"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignHeight="800"
+             d:DesignWidth="1200">
+    
+    <UserControl.DataContext>
+        <vm:SettingViewModel/>
+    </UserControl.DataContext>
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding OnLoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -151,7 +163,14 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Content="연결테스트" Height="50" Background="#db5e56" Foreground="White" FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글">
+                    <Button Grid.Column="0" 
+                            Content="연결테스트" 
+                            Command="{Binding btnConnCheckCommand}"
+                            Height="50"
+                            Cursor="Hand"
+                            Background="#db5e56" 
+                            Foreground="White" 
+                            FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="5">
@@ -184,7 +203,14 @@
                         </Button.Template>
                     </Button>
 
-                    <Button Grid.Column="1" Content="저장" Height="50" Background="#71a1e3" Foreground="White" FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글">
+                    <Button Grid.Column="1"
+                            Content="저장"
+                            Command="{Binding btnSaveCommand}"
+                            Cursor="Hand"
+                            Height="50"
+                            Background="#71a1e3"
+                            Foreground="White"
+                            FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="5">

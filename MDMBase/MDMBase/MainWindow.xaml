@@ -14,6 +14,8 @@
         Width="1000"
         MinWidth="1280"
         MinHeight="800"
+        StateChanged="MainAppWindow_StateChanged"
+        Closing="MainAppWindow_Closing"
         Name="MainAppWindow">
     
     <Window.DataContext>
@@ -66,10 +68,13 @@
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding OnLoadCommand}" />
         </i:EventTrigger>
+        
+        <!--
         <i:EventTrigger EventName="StateChanged">
             <i:InvokeCommandAction Command="{Binding StateChangedCommand}" 
                            CommandParameter="{Binding ElementName=MainAppWindow}"/>
         </i:EventTrigger>
+        -->
     </i:Interaction.Triggers>
 
     <Grid>
