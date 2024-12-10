@@ -2,8 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MDMBase"
+             xmlns:vm="clr-namespace:MDMBase.ViewModel.MainView"
+             xmlns:lm="clr-namespace:MDMBase.ViewModel.LockView"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
-         
+            <vm:MainViewModel x:Key="MainViewModel" />
+            <lm:LockViewModel x:Key="LockViewModel"/>
     </Application.Resources>
+    
 </Application>

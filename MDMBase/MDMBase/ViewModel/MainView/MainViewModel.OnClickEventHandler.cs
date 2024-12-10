@@ -25,7 +25,24 @@ namespace MDMBase.ViewModel.MainView
         private void SettingClickEvent(object parameter)
         {
             // 설정화면
+            var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
+            if (mainViewModel != null)
+            {
+                Console.WriteLine("설정화면");
+                CurrentView = new LockWindow();
+            }
+        }
+
+        private void LockClickEvent(object parameter)
+        {
+            Console.WriteLine("클릭은됨?");
             CurrentView = new SettingWindow();
+
+
+
+
+
+
         }
     }
 }

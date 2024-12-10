@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MDMBase"
-        xmlns:vm="clr-namespace:MDMBase.ViewModel.MainView"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글" 
@@ -18,9 +17,10 @@
         Closing="MainAppWindow_Closing"
         Name="MainAppWindow">
     
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <vm:MainViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
+    
 
     <Window.Resources>
         <!-- 재사용 가능한 ControlTemplate 정의 -->
@@ -147,7 +147,7 @@
             <Button Background="#223377"
                     Foreground="White"
                     Content="설정"
-                    Command="{Binding btnSettingCommand}"
+                    Command="{Binding Source={StaticResource MainViewModel}, Path=btnSettingCommand}"
                     FontWeight="Heavy"
                     Margin="1"
                     Height="50px"
@@ -159,7 +159,8 @@
 
 
         <!-- 오른쪽 패널 -->
-        <ContentControl Content="{Binding CurrentView}" Background="#c4c9cf"  Grid.Column="1" Grid.Row="1"/>
+        <!--<ContentControl Content="{Binding CurrentView}" Background="#c4c9cf"  Grid.Column="1" Grid.Row="1"/>-->
+        <ContentControl Content="{Binding Source={StaticResource MainViewModel}, Path=CurrentView}" Background="#c4c9cf"  Grid.Column="1" Grid.Row="1"/>
 
     </Grid>
 </Window>

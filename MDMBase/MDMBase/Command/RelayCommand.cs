@@ -13,6 +13,7 @@ namespace MDMBase.Command
             _canExecute = canExecute;
         }
 
+        // 해당 이벤트 사용가능한지?
         public bool CanExecute(object? parameter)
         {
             if(_canExecute != null)
@@ -22,6 +23,7 @@ namespace MDMBase.Command
             return true;
         }
 
+        // 이벤트 실행
         public void Execute(object? parameter)
         {
             if(_execute != null)

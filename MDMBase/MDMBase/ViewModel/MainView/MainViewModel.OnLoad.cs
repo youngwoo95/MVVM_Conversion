@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using MDMBase.Views;
+using System.IO;
 using System.Windows;
 
 namespace MDMBase.ViewModel.MainView
@@ -12,9 +13,9 @@ namespace MDMBase.ViewModel.MainView
 		private void OnLoaded(object parameter)
 		{
 			Console.WriteLine("실행");
+            
 
-
-			// BackGround 작업 여기서하면 될듯.
+            // BackGround 작업 여기서하면 될듯.
         }
 
 	
