@@ -18,15 +18,19 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <PasswordBox HorizontalAlignment="Center"
+            
+            <TextBox HorizontalAlignment="Center"
                          VerticalAlignment="Center"
                          Width="250"
                          Height="33"
+                         Text="{Binding PassWord, Source={StaticResource MainViewModel}, UpdateSourceTrigger=PropertyChanged}"
                          HorizontalContentAlignment="Center"
-                         VerticalContentAlignment="Center"/>
-            
-            <Button Content="LockViewModel 테스트" Command="{Binding Source={StaticResource LockViewModel}, Path=TempCommand}"/>
-            
+                         VerticalContentAlignment="Center">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding Source={StaticResource MainViewModel}, Path=ShowSettingViewFromLock}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
             <Button Content="확인"
                     Command="{Binding Source={StaticResource MainViewModel}, Path=ShowSettingViewFromLock}"
                     FontWeight="SemiBold"

@@ -1,4 +1,6 @@
-﻿using UserControl = System.Windows.Controls.UserControl;
+﻿using MDMBase.ViewModel.MainView;
+using System.Windows.Input;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace MDMBase.Views
 {
@@ -11,5 +13,8 @@ namespace MDMBase.Views
         {
             InitializeComponent();
         }
+
+
+      
     }
 }

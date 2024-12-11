@@ -28,7 +28,7 @@ namespace MDMBase.ViewModel.MainView
             var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
             if (mainViewModel != null)
             {
-                Console.WriteLine("설정화면");
+                Console.WriteLine("잠금화면 클릭");
                 CurrentView = new LockWindow();
             }
         }
@@ -37,12 +37,6 @@ namespace MDMBase.ViewModel.MainView
         {
             Console.WriteLine("클릭은됨?");
             CurrentView = new SettingWindow();
-
-
-
-
-
-
         }
     }
 }

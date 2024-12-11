@@ -3,7 +3,7 @@
     /// <summary>
     /// MDM SETTING MDDEL
     /// </summary>
-    public class Settings
+    public class SettingModel
     {
         /// <summary>
         /// 데이터베이스 IP

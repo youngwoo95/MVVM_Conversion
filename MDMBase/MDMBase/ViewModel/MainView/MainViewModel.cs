@@ -1,9 +1,8 @@
 ﻿using MDMBase.Command;
-using MDMBase.ViewModel.LockView;
+using MDMBase.Models;
 using MDMBase.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Input;
 
 using UserControl = System.Windows.Controls.UserControl;
@@ -24,7 +23,7 @@ namespace MDMBase.ViewModel.MainView
         // 테스트
         public ICommand ShowSettingViewFromLock { get; }
 
-      
+        private LockModel LockModel;
 
         // 화면변경
         private UserControl _currentView;
@@ -50,23 +49,39 @@ namespace MDMBase.ViewModel.MainView
             btnSettingCommand = new RelayCommand(SettingClickEvent);
 
 
-            ShowSettingViewFromLock = new RelayCommand(TempClick);
+            ShowSettingViewFromLock = new RelayCommand(PasswordCheckClickEvent);
 
             OnLoadCommand = new RelayCommand(OnLoaded);
-
+            LockModel = new LockModel();
         }
 
-        private void TempClick(object parameter)
+        public string PassWord
+        {
+            get => LockModel.PassWord ?? "";
+            set
+            {
+                if (LockModel.PassWord != value)
+                {
+                    LockModel.PassWord = value;
+                    OnPropertyChanged(nameof(PassWord));
+                }
+            }
+        }
+
+        private void PasswordCheckClickEvent(object parameter)
         {
             // 시작화면
             var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
             if (mainViewModel != null)
             {
-                Console.WriteLine("동작?");
-                CurrentView = new SettingWindow();
+                Console.WriteLine(PassWord);
+                if (PassWord.ToLower().Trim().Equals(Commons.SettingLockPassword))
+                {
+                    Console.WriteLine("비밀번호 동일함.");
+                    CurrentView = new SettingWindow();
+                }
             }
         }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
