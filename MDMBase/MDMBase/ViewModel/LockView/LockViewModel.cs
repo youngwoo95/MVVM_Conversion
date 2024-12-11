@@ -11,24 +11,10 @@ namespace MDMBase.ViewModel.LockView
 {
     public partial class LockViewModel : INotifyPropertyChanged
     {
-        //public ICommand TempCommand { get; }
 
         public LockViewModel()
         {
-            
-            //TempCommand = new RelayCommand(TempClick);
         }
-
-
-        //private void TempClick(object parameter)
-        //{
-        //    // 시작화면// LockViewModel 접근
-        //    var lockViewModel = App.Current.Resources["LockViewModel"] as LockViewModel;
-        //    if (lockViewModel != null)
-        //    {
-        //        Console.WriteLine("LockViewModel 접근 성공!");
-        //    }
-        //}
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

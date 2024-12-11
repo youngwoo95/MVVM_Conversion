@@ -17,11 +17,6 @@
         Closing="MainAppWindow_Closing"
         Name="MainAppWindow">
     
-    <!--<Window.DataContext>
-        <vm:MainViewModel/>
-    </Window.DataContext>-->
-    
-
     <Window.Resources>
         <!-- 재사용 가능한 ControlTemplate 정의 -->
         <ControlTemplate x:Key="AnimatedButtonTemplate" TargetType="Button">
@@ -68,25 +63,9 @@
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding OnLoadCommand}" />
         </i:EventTrigger>
-        
-        <!--
-        <i:EventTrigger EventName="StateChanged">
-            <i:InvokeCommandAction Command="{Binding StateChangedCommand}" 
-                           CommandParameter="{Binding ElementName=MainAppWindow}"/>
-        </i:EventTrigger>
-        -->
     </i:Interaction.Triggers>
 
     <Grid>
-        <!-- Interaction을 통해 Loaded 이벤트를 Command에 바인딩 -->
-        <!--<i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding OnLoadCommand}"/>
-            </i:EventTrigger>
-        </i:Interaction.Triggers>-->
-        
-       
-        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180px" />
             <ColumnDefinition Width="*" />
@@ -156,10 +135,7 @@
                     FontFamily="pack://application:,,,/Fonts/#나눔바른고딕OTF 옛한글" />
         </StackPanel>
 
-
-
         <!-- 오른쪽 패널 -->
-        <!--<ContentControl Content="{Binding CurrentView}" Background="#c4c9cf"  Grid.Column="1" Grid.Row="1"/>-->
         <ContentControl Content="{Binding Source={StaticResource MainViewModel}, Path=CurrentView}" Background="#c4c9cf"  Grid.Column="1" Grid.Row="1"/>
 
     </Grid>

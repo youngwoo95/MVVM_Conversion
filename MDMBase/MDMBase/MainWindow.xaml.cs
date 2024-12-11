@@ -1,7 +1,5 @@
-﻿using MDMBase.ViewModel.MainView;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Forms;
 
 namespace MDMBase
 {

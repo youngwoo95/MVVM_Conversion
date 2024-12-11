@@ -4,10 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MDMBase.Views"
+             xmlns:helpers="clr-namespace:MDMBase.Helpers"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="450"
              d:DesignWidth="800">
+
+    <!-- DataContext를 StaticResource로 설정 -->
+    <UserControl.DataContext>
+        <StaticResource ResourceKey="MainViewModel"/>
+    </UserControl.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,18 +25,16 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            
-            <TextBox HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         Width="250"
-                         Height="33"
-                         Text="{Binding PassWord, Source={StaticResource MainViewModel}, UpdateSourceTrigger=PropertyChanged}"
-                         HorizontalContentAlignment="Center"
-                         VerticalContentAlignment="Center">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding Source={StaticResource MainViewModel}, Path=ShowSettingViewFromLock}"/>
-                </TextBox.InputBindings>
-            </TextBox>
+            <!-- PasswordBox에 BoundPassword 강제 초기화 -->
+            <PasswordBox Width="200" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <i:Interaction.Behaviors>
+                    <helpers:PasswordBoxBehavior BoundPassword="{Binding Password, Mode=TwoWay}" />
+                </i:Interaction.Behaviors>
+                <!-- 엔터키 감지 -->
+                <PasswordBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}" />
+                </PasswordBox.InputBindings>
+            </PasswordBox>
 
             <Button Content="확인"
                     Command="{Binding Source={StaticResource MainViewModel}, Path=ShowSettingViewFromLock}"

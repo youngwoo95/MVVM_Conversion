@@ -1,6 +1,5 @@
 ﻿using MDMBase.Command;
 using MDMBase.Models;
-using MDMBase.Views;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -19,9 +18,11 @@ namespace MDMBase.ViewModel.MainView
         public ICommand btnStopCommand { get; }
         public ICommand btnSettingCommand { get; }
         public ICommand OnLoadCommand { get; }
-       
-        // 테스트
+        
+        /* LOCK 화면에서 비밀번호 검사 */
         public ICommand ShowSettingViewFromLock { get; }
+        /* LOCK 화면에서 비밀번호 검사 */
+        public ICommand EnterKeyCommand { get; }
 
         private LockModel LockModel;
 
@@ -43,45 +44,30 @@ namespace MDMBase.ViewModel.MainView
 
         public MainViewModel()
         {
+            LockModel = new LockModel();
             btnHomeCommand = new RelayCommand(HomeClickEvent);
             btnStartCommand = new RelayCommand(StartClickEvent);
             btnStopCommand = new RelayCommand(StopClickEvent);
             btnSettingCommand = new RelayCommand(SettingClickEvent);
 
-
             ShowSettingViewFromLock = new RelayCommand(PasswordCheckClickEvent);
-
+            EnterKeyCommand = new RelayCommand(PasswordCheckClickEvent);
             OnLoadCommand = new RelayCommand(OnLoaded);
-            LockModel = new LockModel();
         }
-
-        public string PassWord
+   
+        public string Password
         {
-            get => LockModel.PassWord ?? "";
+            get => LockModel.Password ?? "";
             set
             {
-                if (LockModel.PassWord != value)
+                if (LockModel.Password != value)
                 {
-                    LockModel.PassWord = value;
-                    OnPropertyChanged(nameof(PassWord));
+                    LockModel.Password = value;
+                    OnPropertyChanged();
                 }
             }
         }
-
-        private void PasswordCheckClickEvent(object parameter)
-        {
-            // 시작화면
-            var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
-            if (mainViewModel != null)
-            {
-                Console.WriteLine(PassWord);
-                if (PassWord.ToLower().Trim().Equals(Commons.SettingLockPassword))
-                {
-                    Console.WriteLine("비밀번호 동일함.");
-                    CurrentView = new SettingWindow();
-                }
-            }
-        }
+      
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

@@ -33,10 +33,25 @@ namespace MDMBase.ViewModel.MainView
             }
         }
 
-        private void LockClickEvent(object parameter)
+        private void PasswordCheckClickEvent(object parameter)
         {
-            Console.WriteLine("클릭은됨?");
-            CurrentView = new SettingWindow();
+            // 시작화면
+            var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
+            if (mainViewModel != null)
+            {
+                if (Password.ToLower().Trim().Equals(Commons.SettingLockPassword))
+                {
+                    CurrentView = new SettingWindow();
+                }
+                else
+                {
+                    MessageBox.Show("비밀번호를 확인해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
+
+
+
+        
     }
 }
