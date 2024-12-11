@@ -10,10 +10,38 @@
              d:DesignHeight="450"
              d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <Style TargetType="PasswordBox" x:Key="BottomBorderPasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Grid>
+                            <Border BorderThickness="0,0,0,1"
+                                    BorderBrush="Gray"
+                                    Background="Transparent"
+                                    CornerRadius="0"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0,0,0,1"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <!-- 기본 스타일 설정 -->
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <!-- PasswordBox에 BoundPassword 사용 -->
-            <PasswordBox Width="200" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            <PasswordBox Width="250" 
+                         Style="{StaticResource BottomBorderPasswordBox}"
+                         Height="30" 
+                         VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Center">
                 <i:Interaction.Behaviors>
                     <helpers:PasswordBoxBehavior BoundPassword="{Binding Password, Mode=TwoWay}" />
                 </i:Interaction.Behaviors>
@@ -35,7 +63,12 @@
                     Background="#223399"
                     Foreground="#fff"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center">
+                <Button.Template>
+                    
+                </Button.Template>
+                
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

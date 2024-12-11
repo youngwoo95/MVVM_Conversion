@@ -44,6 +44,7 @@ namespace MDMBase.ViewModel.MainView
             {
                 if (Password.ToLower().Trim().Equals(Commons.SettingLockPassword))
                 {
+                    Password = String.Empty;
                     CurrentView = new SettingWindow();
                 }
                 else

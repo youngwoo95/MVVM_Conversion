@@ -21,6 +21,7 @@ namespace MDMBase.ViewModel.MainView
         
         /* LOCK 화면에서 비밀번호 검사 */
         public ICommand ShowSettingViewFromLock { get; }
+
         /* LOCK 화면에서 비밀번호 검사 */
         public ICommand EnterKeyCommand { get; }
 
