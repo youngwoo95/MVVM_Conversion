@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using MDMBase.ViewModel.MainView;
+using System.IO;
 using System.Windows;
 
 namespace MDMBase
@@ -10,9 +11,12 @@ namespace MDMBase
     {
         private NotifyIcon? notifyIcon;
 
-        public MainWindow()
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
+
+            DataContext = viewModel; // ViewModel을 DataContext에 설정
+
             InitializeTrayIcon();
         }
 

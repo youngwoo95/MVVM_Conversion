@@ -3,29 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MDMBase.Views"
-             xmlns:helpers="clr-namespace:MDMBase.Helpers"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:helpers="clr-namespace:MDMBase.Helpers"
              mc:Ignorable="d" 
              Background="White"
              d:DesignHeight="450"
              d:DesignWidth="800">
 
-    <!-- DataContext를 StaticResource로 설정 -->
-    <UserControl.DataContext>
-        <StaticResource ResourceKey="MainViewModel"/>
-    </UserControl.DataContext>
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <!-- PasswordBox에 BoundPassword 강제 초기화 -->
+            <!-- PasswordBox에 BoundPassword 사용 -->
             <PasswordBox Width="200" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                 <i:Interaction.Behaviors>
                     <helpers:PasswordBoxBehavior BoundPassword="{Binding Password, Mode=TwoWay}" />
@@ -36,8 +23,9 @@
                 </PasswordBox.InputBindings>
             </PasswordBox>
 
+            <!-- 확인 버튼 -->
             <Button Content="확인"
-                    Command="{Binding Source={StaticResource MainViewModel}, Path=ShowSettingViewFromLock}"
+                    Command="{Binding ShowSettingViewFromLock}"
                     FontWeight="SemiBold"
                     FontSize="16"
                     Width="100"
@@ -47,17 +35,7 @@
                     Background="#223399"
                     Foreground="#fff"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontFamily="pack://application:,,,/Fonts/#NanumBarunGothicOTF">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
+                    VerticalAlignment="Center" />
         </StackPanel>
     </Grid>
 </UserControl>

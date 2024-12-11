@@ -9,9 +9,10 @@ namespace MDMBase.Views
     /// </summary>
     public partial class LockWindow : UserControl
     {
-        public LockWindow()
+        public LockWindow(MainViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
 
 

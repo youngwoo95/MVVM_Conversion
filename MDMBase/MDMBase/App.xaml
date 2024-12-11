@@ -1,4 +1,4 @@
-﻿<Application x:Class="MDMBase.App"
+﻿<!--<Application x:Class="MDMBase.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:MDMBase"
@@ -11,4 +11,11 @@
             <lm:LockViewModel x:Key="LockViewModel"/>
     </Application.Resources>
     
+</Application>-->
+
+<Application x:Class="MDMBase.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 </Application>
+
+    

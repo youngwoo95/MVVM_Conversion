@@ -1,4 +1,5 @@
 ﻿using MDMBase.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MDMBase.ViewModel.MainView
 {
@@ -24,20 +25,22 @@ namespace MDMBase.ViewModel.MainView
 
         private void SettingClickEvent(object parameter)
         {
-            // 설정화면
-            var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
-            if (mainViewModel != null)
+            // DI 컨테이너에서 LockWindow 인스턴스를 가져옵니다.
+            var lockWindow = App.ServiceProvider.GetRequiredService<LockWindow>();
+
+            if (lockWindow != null)
             {
                 Console.WriteLine("잠금화면 클릭");
-                CurrentView = new LockWindow();
+                CurrentView = lockWindow; // 현재 View를 LockWindow로 변경
             }
         }
 
         private void PasswordCheckClickEvent(object parameter)
         {
-            // 시작화면
-            var mainViewModel = App.Current.Resources["MainViewModel"] as MainViewModel;
-            if (mainViewModel != null)
+            // LockWindow를 DI 컨테이너에서 가져오기
+            var lockWindow = App.ServiceProvider.GetRequiredService<LockWindow>();
+
+            if (lockWindow != null)
             {
                 if (Password.ToLower().Trim().Equals(Commons.SettingLockPassword))
                 {
@@ -49,8 +52,6 @@ namespace MDMBase.ViewModel.MainView
                 }
             }
         }
-
-
 
         
     }
